@@ -37,7 +37,7 @@ const ProductList = () => {
   // Helper function to format price
   const formatPrice = (price) => {
     const numPrice = Number(price);
-    return isNaN(numPrice) ? 'N/A' : `$${numPrice.toFixed(2)}`;
+    return isNaN(numPrice) ? 'N/A' : `€${numPrice.toFixed(2)}`;
   };
 
   return (

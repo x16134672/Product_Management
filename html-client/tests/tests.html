@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browser Integration Tests</title>
+
+  <!-- Mocha CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.css" />
+   
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <div id="mocha"></div>
+
+  <!-- Mocha JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.js"></script>
+
+  <!-- Chai (for expect/assert/should) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.8/chai.min.js"></script>
+
+  <!-- Set up Mocha -->
+  <script>
+    mocha.setup('bdd'); 
+    const expect = chai.expect;  // <--- THIS IS THE KEY
+  </script>
+
+  <!-- Your API and Tests -->
+  <script src="../js/api.js"></script>
+  <script src="browser-tests.js"></script>
+
+  <!-- Run Mocha -->
+  <script>
+    mocha.run();
+  </script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+	color:black!important;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    #mocha {
+      margin-top: 40px;
+    }
+    #mocha-stats em {
+    color: black;
+	}
+  </style>
+</body>
+</html>

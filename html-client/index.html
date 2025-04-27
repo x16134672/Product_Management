@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Product List</h1>
+        <a class="add-button" href="create.html">+ Add Product</a>
+
+        <ul id="product-list" class="product-list"></ul>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        fetchProducts();
+
+        async function fetchProducts() {
+            const products = await getProducts();
+            const list = document.getElementById('product-list');
+            list.innerHTML = '';
+
+            products.forEach(p => {
+                const item = document.createElement('li');
+                item.className = 'product-item';
+                item.innerHTML = `
+          <div class="product-info">
+            <h2>${p.name}</h2>
+            <p><strong>Description:</strong> ${p.description}</p>
+            <p><strong>Price:</strong> €${p.price}</p>
+            <p><strong>Available:</strong> ${p.available ? 'Yes' : 'No'}</p>
+          </div>
+          <div class="product-actions">
+            <a class="edit-btn" href="edit.html?id=${p.id}">Edit</a>
+            <button class="delete-btn" onclick="deleteProduct(${p.id})">Delete</button>
+          </div>
+        `;
+                list.appendChild(item);
+            });
+        }
+    </script>
+</body>
+
+</html>

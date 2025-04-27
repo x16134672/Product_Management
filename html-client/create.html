@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Product</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add Product</h1>
+        <form id="product-form" class="form">
+            <label>
+                Name:
+                <input name="name" placeholder="Name" required />
+            </label>
+
+            <label>
+                Description:
+                <textarea name="description" placeholder="Description" rows="3" required></textarea>
+            </label>
+
+            <label>
+                Price:
+                <input name="price" type="number" step="0.01" placeholder="Price" required />
+            </label>
+
+            <label class="checkbox-label">
+                <input name="available" type="checkbox" />
+                Available
+            </label>
+
+            <button type="submit" class="submit-btn">Add Product</button>
+        </form>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('product-form').addEventListener('submit', async e => {
+            e.preventDefault();
+            const form = e.target;
+            const product = {
+                name: form.name.value,
+                description: form.description.value,
+                price: parseFloat(form.price.value),
+                available: form.available.checked
+            };
+            await createProduct(product);
+            location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

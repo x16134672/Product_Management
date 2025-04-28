@@ -21,7 +21,7 @@ const ProductList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`http://localhost:3001/products/${id}`);
+        await axios.delete(`/products/${id}`);
         setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
       } catch (error) {
         console.error('Delete error:', error);

@@ -11,7 +11,7 @@ const ProductForm = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:3001/products/${id}`)
+      axios.get(`/products/${id}`)
         .then(response => setFormData(response.data))
         .catch(() => navigate('/'));
     }
@@ -33,9 +33,9 @@ const ProductForm = () => {
           },
         };
         if (id) {
-          await axios.patch(`http://localhost:3001/products/${id}`, payload);
+          await axios.patch(`/products/${id}`, payload);
         } else {
-          await axios.post('http://localhost:3001/products', payload);
+          await axios.post('/products', payload);
         }
         navigate('/');
       } catch (error) {

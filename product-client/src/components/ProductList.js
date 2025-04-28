@@ -8,7 +8,7 @@ const ProductList = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/products')
+      .get('/products')
       .then((response) => {
         setProducts(response.data);
       })

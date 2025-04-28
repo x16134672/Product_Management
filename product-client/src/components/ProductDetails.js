@@ -10,7 +10,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/products/${id}`)
+    axios.get(`/products/${id}`)
       .then((response) => {
         console.log('API response:', response.data); // Debug log (remove after debugging)
         const productData = response.data;

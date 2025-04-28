@@ -8,25 +8,26 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios
-    axios.get(`/products/${id}`)
-      .then((response) => {
-        console.log('API response:', response.data); // Debug log (remove after debugging)
-        const productData = response.data;
-        // Convert price to number if it's a string
-        if (productData.price && typeof productData.price === 'string') {
-          productData.price = parseFloat(productData.price);
-        }
-        setProduct(productData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching product:', error);
-        setError('Failed to load product details');
-        setLoading(false);
-      });
-  }, [id]);
+useEffect(() => {
+  axios
+    .get(`/products/${id}`)
+    .then((response) => {
+      console.log('API response:', response.data); // Debug log (remove after debugging)
+      const productData = response.data;
+      // Convert price to number if it's a string
+      if (productData.price && typeof productData.price === 'string') {
+        productData.price = parseFloat(productData.price);
+      }
+      setProduct(productData);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error('Error fetching product:', error);
+      setError('Failed to load product details');
+      setLoading(false);
+    });
+}, [id]);
+
 
   if (loading) {
     return (
